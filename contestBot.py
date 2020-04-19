@@ -114,7 +114,8 @@ def remind():
     print(response2)
 
 
-schedule.every(1).minutes.do(remind)
+schedule.every().day.at("11:00").do(remind)
+
 
 while True:
     schedule.run_pending()
