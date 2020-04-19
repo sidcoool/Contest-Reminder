@@ -2,8 +2,12 @@ beautifulsoup4
 bs4
 certifi
 chardet
+html5lib
 idna
+lxml
 requests
 schedule
+six
 soupsieve
 urllib3
+webencodings
