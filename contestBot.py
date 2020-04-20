@@ -3,6 +3,18 @@ from bs4 import BeautifulSoup
 import time
 import schedule
 
+def timeChange(time):
+    timeSplit = time.split(":")
+    hrs = int(timeSplit[0]) + 2
+    minutes = int(timeSplit[1]) + 30
+    if(minutes > 60):
+        minutes = minutes%60
+        hrs = hrs + 1
+    if(minutes < 10):
+        minutes = '0' + str(minutes)
+
+    return str(hrs) + ":" + str(minutes)
+
 def remind():
     newLine = """
     """ 
@@ -88,7 +100,11 @@ def remind():
         else:
             f = True
 
-    # print(quotes2)
+    #quotes2 = [{'name': 'Codeforces Round 636 (Div. 3)', 'start': 'Apr/21/2020 17:35', 'len': '02:00'}, {'name': 'Codeforces Round 637 (Div. 1)', 'start': 'Apr/23/2020 17:35', 'len': '02:30'}, {'name': 'Codeforces Round 637 (Div. 2)', 'start': 'Apr/23/2020 17:35', 'len': '02:30'}, {'name': 'Educational Codeforces Round 86 (Rated for Div. 2)', 'start': 'Apr/26/2020 17:35', 'len': '02:00'}]
+    #print(quotes2)
+
+    for x in quotes2:
+        x['start'] = x['start'].split(' ')[0] + " " + timeChange(x['start'].split(' ')[1])
 
     bot_message2 = """*Codeforces Contests*
     """ + newLine 
@@ -115,8 +131,15 @@ def remind():
 
 
 schedule.every().day.at("11:00").do(remind)
+#schedule.every(0.5).minutes.do(remind)
 
 
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+
+
+
+ 
+
