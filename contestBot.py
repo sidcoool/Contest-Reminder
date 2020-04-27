@@ -1,3 +1,4 @@
+import credentials
 import requests 
 from bs4 import BeautifulSoup  
 import time
@@ -118,8 +119,8 @@ def remind():
 
     # print(bot_message2)
 
-    bot_token = '1198731488:AAHK3JI7Ltv9gkt3dSUzNujywVl7j5_VZDA'
-    bot_chatID = '-1001474350565'
+    bot_token = credentials.token
+    bot_chatID = credentials.chatID_prod
 
     send_text1 = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message1
     response1 = requests.get(send_text1)
@@ -140,6 +141,4 @@ while True:
 
 
 
-
- 
 
