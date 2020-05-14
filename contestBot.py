@@ -36,15 +36,15 @@ def remind():
     quote1 = {}
     for row in contests1:
             if(i%4 == 1):
-                quote1['name'] = row.text.strip()
+                quote1['name'] = row.text.strip().replace('#', "") 
             if(i%4 == 2):
-                quote1['start'] = row.text.strip()
+                quote1['start'] = row.text.strip().replace('#', "") 
             if(i%4 == 3):
-                quote1['end'] = row.text.strip()
+                quote1['end'] = row.text.strip().replace('#', "") 
             if(i%4 == 3):
                 quotes1.append(quote1)
                 quote1 = {} 
-            i += 1;
+            i += 1
 
     #print(str(quotes1))
 
@@ -57,7 +57,7 @@ def remind():
         bot_message1 += '*' + str(entry['name']) + '*' + newLine
         bot_message1 += '   Start: ' + str(entry['start']) + newLine
         bot_message1 += '   End: ' + str(entry['end']) + newLine
-        bot_message1 += newLine
+    bot_message1 += newLine + 'https://codechef.com/contests' + newLine
 
 
 
@@ -97,7 +97,7 @@ def remind():
                     if(j%6 == 3):
                         quotes2.append(quote2)
                         quote2 = {} 
-                    j += 1;
+                    j += 1
         else:
             f = True
 
@@ -115,7 +115,7 @@ def remind():
         bot_message2 += '*' + str(entry['name']) + '*' + newLine
         bot_message2 += '   Start: ' + str(entry['start']) + newLine
         bot_message2 += '   Length: ' + str(entry['len']) + newLine
-        bot_message2 += newLine
+    bot_message2 += newLine + 'https://codeforces.com/contests' + newLine
 
     # print(bot_message2)
 
